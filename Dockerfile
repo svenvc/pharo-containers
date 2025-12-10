@@ -1,4 +1,4 @@
-FROM ubuntu:latest AS build
+FROM ubuntu:latest AS builder
 
 RUN apt-get update && apt-get install -y --no-install-recommends curl unzip ca-certificates
 
