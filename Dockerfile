@@ -21,7 +21,7 @@ WORKDIR /pharo
 
 COPY run.st ./
 COPY --from=builder /pharo/pharo ./
-COPY --from=builder /pharo/pharo-vm ./
+COPY --from=builder /pharo/pharo-vm ./pharo-vm
 COPY --from=builder /pharo/Pharo.image ./
 
 CMD ./pharo Pharo.image st --no-quit run.st
