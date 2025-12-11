@@ -11,7 +11,7 @@ RUN curl get.pharo.org | bash
 RUN ./pharo Pharo.image st --save --quit build.st
 
 RUN ./pharo Pharo.image clean --production
-RUN ./pharo Pharo.iamge st --save --quit remove.st
+RUN ./pharo Pharo.image st --save --quit remove.st
 RUN ./pharo Pharo.image eval --save NoPharoFilesOpener install
 
 
