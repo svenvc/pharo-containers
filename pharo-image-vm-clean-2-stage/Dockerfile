@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl unzip ca-c
 
 WORKDIR /pharo
 
-COPY build.st run.st ./
+COPY build.st remove.st delete-vm-libs.st ./
 
 RUN curl get.pharo.org | bash
 
@@ -12,6 +12,7 @@ RUN ./pharo Pharo.image st --save --quit build.st
 
 RUN ./pharo Pharo.image clean --production
 RUN ./pharo Pharo.iamge st --save --quit remove.st
+RUN ./pharo Pharo.image st --quit delete-vm-libs.st
 RUN ./pharo Pharo.image eval --save NoPharoFilesOpener install
 
 
@@ -23,5 +24,7 @@ COPY run.st ./
 COPY --from=builder /pharo/pharo ./
 COPY --from=builder /pharo/pharo-vm ./pharo-vm
 COPY --from=builder /pharo/Pharo.image ./
+
+EXPOSE 8080
 
 CMD ./pharo Pharo.image st --no-quit run.st
